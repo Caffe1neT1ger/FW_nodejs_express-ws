@@ -3,6 +3,7 @@ meta:
   toolchain:
     name: npm
     version: 18
-
+build:
+    additionalCommands: npm run install
 run:
   command: npm run start
