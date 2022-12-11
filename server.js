@@ -19,18 +19,7 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.json());
 app.use(cors());
 
-app.post(
-  "/api/room/:id",
-  expressAsyncHandler(async (req, res) => {
-    try {
-      const { roomId, isPause, progress } = req.body;
-    } catch (error) {
-      console.log(error);
-      return res.status(500, "error");
-    }
-  })
-);
-app.ws("/api/room/:id/", function (ws, req) {
+app.ws("/api/room/", function (ws, req) {
   ws.on("open", function (message) {});
 
   ws.on("message", function (message) {
@@ -53,7 +42,7 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
+    `Server running on port ${PORT}`.yellow.bold
   );
 });
 
